@@ -2,29 +2,33 @@ package saiki.app.common
 
 import io.reactivex.*
 import io.reactivex.disposables.Disposable
-import io.reactivex.subjects.PublishSubject
 
-class RepositoryListPresenterImple(){
 
-    val repositoriesObservable: PublishSubject<Resource<List<GitHubRepo>>> = PublishSubject.create<Resource<List<GitHubRepo>>>()
+class RepositoryListPresenterImpl(val view: RepositoryListContract.View) : RepositoryListContract.Presenter {
 
-    fun getRepositories(postThread: Scheduler, subscribeThread: Scheduler) {
+    override fun getRepositories(subscribeThread: Scheduler, postThread: Scheduler) {
         val gitHubApi = ServiceGenerator.createGitHubClient(GitHubApi::class.java)
         gitHubApi.getRepos()
                 .subscribeOn(subscribeThread)
                 .observeOn(postThread)
                 .subscribe(object : SingleObserver<List<GitHubRepo>> {
-                    override fun onSubscribe(d: Disposable) {
-                        repositoriesObservable.onNext(Resource.load(listOf()))
-                    }
+                    override fun onSubscribe(d: Disposable) {}
 
                     override fun onSuccess(repoList: List<GitHubRepo>) {
-                        repositoriesObservable.onNext(Resource.success(repoList))
+                        view.showRepoList(repoList)
                     }
 
-                    override fun onError(e: Throwable) {
-                        repositoriesObservable.onNext(Resource.error(listOf()))
-                    }
+                    override fun onError(e: Throwable) {}
                 })
+    }
+}
+
+interface RepositoryListContract {
+    interface View {
+        fun showRepoList(repoList: List<GitHubRepo>)
+    }
+
+    interface Presenter {
+        fun getRepositories(subscribeThread: Scheduler, postThread: Scheduler)
     }
 }
