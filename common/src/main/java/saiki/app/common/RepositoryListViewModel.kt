@@ -10,7 +10,7 @@ class RepositoryListPresenterImple(){
 
     fun getRepositories(postThread: Scheduler, subscribeThread: Scheduler) {
         val gitHubApi = ServiceGenerator.createGitHubClient(GitHubApi::class.java)
-        gitHubApi.repos
+        gitHubApi.getRepos()
                 .subscribeOn(subscribeThread)
                 .observeOn(postThread)
                 .subscribe(object : SingleObserver<List<GitHubRepo>> {

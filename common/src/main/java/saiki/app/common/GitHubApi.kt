@@ -7,8 +7,8 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 interface GitHubApi {
-    @get:GET("orgs/SnowdogApps/repos")
-    val repos: Single<List<GitHubRepo>>
+    @GET("orgs/SnowdogApps/getRepos")
+    fun getRepos(): Single<List<GitHubRepo>>
 }
 
 object ServiceGenerator {
