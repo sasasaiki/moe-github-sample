@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '1.0.6'
+    ext.kotlin_version = '1.2.41'
     repositories {
         jcenter()
         maven { url 'http://oss.sonatype.org/content/repositories/snapshots' }
@@ -7,7 +7,7 @@ buildscript {
     }
     dependencies {
         // Multi-OS Engine plugin
-        classpath group: 'org.multi-os-engine', name: 'moe-gradle', version: '1.4.+'
+        classpath group: 'org.multi-os-engine', name: 'moe-gradle', version: '1.4.4'
 
         // Kotlin plugin
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"

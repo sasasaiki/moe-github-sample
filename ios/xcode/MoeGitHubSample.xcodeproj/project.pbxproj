@@ -13,7 +13,7 @@
 		58C6F5371DA66CB600309CB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58C6F5351DA66CB600309CB6 /* LaunchScreen.storyboard */; };
 		7257D4A36FCE7021D51418D0 /* moe-main-interfaces.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FB8723AE44127384950C03 /* moe-main-interfaces.m */; };
 		AA280589C2A1E6E4E0ED0A6B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D37F8D36DAE671026E74C4A8 /* main.cpp */; };
-		C69EC7FD217C7AEA00AE6A33 /* RepositoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C69EC7FC217C7AEA00AE6A33 /* RepositoryListViewController.m */; };
+		C69EC800217CAFC000AE6A33 /* RepositoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C69EC7FF217CAFC000AE6A33 /* RepositoryListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +26,8 @@
 		58C6F5361DA66CB600309CB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		58C6F5381DA66CB600309CB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B9E4EA0176100F12C127E08 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		C69EC7FB217C7AEA00AE6A33 /* RepositoryListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RepositoryListViewController.h; sourceTree = "<group>"; };
-		C69EC7FC217C7AEA00AE6A33 /* RepositoryListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RepositoryListViewController.m; sourceTree = "<group>"; };
+		C69EC7FE217CAFC000AE6A33 /* RepositoryListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RepositoryListViewController.h; sourceTree = "<group>"; };
+		C69EC7FF217CAFC000AE6A33 /* RepositoryListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RepositoryListViewController.m; sourceTree = "<group>"; };
 		D37F8D36DAE671026E74C4A8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,8 +101,8 @@
 				58C6F5351DA66CB600309CB6 /* LaunchScreen.storyboard */,
 				58C6F5381DA66CB600309CB6 /* Info.plist */,
 				58C6F5271DA66CB600309CB6 /* Supporting Files */,
-				C69EC7FB217C7AEA00AE6A33 /* RepositoryListViewController.h */,
-				C69EC7FC217C7AEA00AE6A33 /* RepositoryListViewController.m */,
+				C69EC7FE217CAFC000AE6A33 /* RepositoryListViewController.h */,
+				C69EC7FF217CAFC000AE6A33 /* RepositoryListViewController.m */,
 			);
 			path = MoeGitHubSample;
 			sourceTree = "<group>";
@@ -255,7 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA280589C2A1E6E4E0ED0A6B /* main.cpp in Sources */,
-				C69EC7FD217C7AEA00AE6A33 /* RepositoryListViewController.m in Sources */,
+				C69EC800217CAFC000AE6A33 /* RepositoryListViewController.m in Sources */,
 				7257D4A36FCE7021D51418D0 /* moe-main-interfaces.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

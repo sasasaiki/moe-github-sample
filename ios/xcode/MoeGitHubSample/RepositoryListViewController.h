@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface RepositoryListViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITableView *repositoryTableView;
 
 @end

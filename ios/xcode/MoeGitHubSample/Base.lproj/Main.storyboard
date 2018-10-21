@@ -43,6 +43,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="IrX-lV-pKX" id="rWe-v1-uv1"/>
+                                    <outlet property="delegate" destination="IrX-lV-pKX" id="eCz-cv-WxF"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -53,6 +57,9 @@
                             <constraint firstItem="OeA-XN-svv" firstAttribute="leading" secondItem="veJ-pF-fRH" secondAttribute="leading" id="daa-J5-r80"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="repositoryTableView" destination="OeA-XN-svv" id="Ufb-0b-Yc8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dYu-8u-0Kp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
