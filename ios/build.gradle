@@ -11,6 +11,7 @@ buildscript {
 
         // Kotlin plugin
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
     }
 }
 
@@ -53,6 +54,10 @@ dependencies {
     compile fileTree(include: '*.jar', dir: 'lib')
     // Add Kotlin dependency
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    implementation 'com.github.devjn:rxiosmoe:2.0.1'
+    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+
     implementation project(':common')
 }
 
