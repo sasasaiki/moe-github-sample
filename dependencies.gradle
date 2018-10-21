@@ -1,0 +1,9 @@
+ext {
+    // ビルド設定
+    compileVersion = 28
+    targetVersion = 28
+    minVersion = 21
+
+    rxJavaVersion = "2.0.2"
+
+}
