@@ -29,15 +29,15 @@ import org.moe.natj.general.ptr.VoidPtr;
 import org.moe.natj.objc.Class;
 import org.moe.natj.objc.ObjCRuntime;
 import org.moe.natj.objc.SEL;
-import org.moe.natj.objc.ann.ObjCClassBinding;
 import org.moe.natj.objc.ann.ObjCClassName;
 import org.moe.natj.objc.ann.Selector;
 import org.moe.natj.objc.map.ObjCObjectMapper;
 
-@org.moe.natj.general.ann.Runtime(ObjCRuntime.class)
+@Runtime(ObjCRuntime.class)
 @ObjCClassName("RepositoryListViewController")
 @RegisterOnStartup
 public class RepositoryListViewController extends UIViewController implements UITableViewDataSource, UITableViewDelegate {
+
     private static final String CELL_IDENTIFIER = "repositoryItemCell";
 
     @Override
@@ -48,15 +48,8 @@ public class RepositoryListViewController extends UIViewController implements UI
     }
 
     @Override
-    @NInt
     public long tableViewNumberOfRowsInSection(UITableView tableView, @NInt long section) {
         return 5;
-    }
-
-    @Override
-    public void viewDidLoad(){
-        super.viewDidLoad();
-
     }
 
     static {
