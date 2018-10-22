@@ -7,13 +7,22 @@ import apple.foundation.NSBundle;
 import apple.foundation.NSCoder;
 import apple.foundation.NSIndexPath;
 import apple.foundation.NSMethodSignature;
+import apple.foundation.NSOperationQueue;
 import apple.foundation.NSSet;
+import apple.foundation.enums.NSQualityOfService;
 import apple.uikit.UITableView;
 import apple.uikit.UITableViewCell;
 import apple.uikit.UIViewController;
 import apple.uikit.protocol.UITableViewDataSource;
 import apple.uikit.protocol.UITableViewDelegate;
+import io.reactivex.Scheduler;
+import io.reactivex.ios.schedulers.IOSSchedulers;
+import saiki.app.common.GitHubRepo;
+import saiki.app.common.RepositoryListContract;
+import saiki.app.common.RepositoryListPresenterImpl;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import org.moe.natj.c.ann.FunctionPtr;
 import org.moe.natj.general.NatJ;
 import org.moe.natj.general.Pointer;
@@ -33,32 +42,53 @@ import org.moe.natj.objc.ann.ObjCClassName;
 import org.moe.natj.objc.ann.Selector;
 import org.moe.natj.objc.map.ObjCObjectMapper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Runtime(ObjCRuntime.class)
 @ObjCClassName("RepositoryListViewController")
 @RegisterOnStartup
-public class RepositoryListViewController extends UIViewController implements UITableViewDataSource, UITableViewDelegate {
+public class RepositoryListViewController extends UIViewController implements RepositoryListContract.View,UITableViewDataSource, UITableViewDelegate {
 
     private static final String CELL_IDENTIFIER = "repositoryItemCell";
 
     @Override
     public UITableViewCell tableViewCellForRowAtIndexPath(UITableView tableView, NSIndexPath indexPath) {
         UITableViewCell cell = (UITableViewCell) tableView.dequeueReusableCellWithIdentifierForIndexPath(CELL_IDENTIFIER, indexPath);
-        cell.textLabel().setText("Test");
+        cell.textLabel().setText(repoList.get((int) indexPath.row()).getName());
         return cell;
     }
 
     @Override
     public long tableViewNumberOfRowsInSection(UITableView tableView, @NInt long section) {
-        return 5;
+        return repoList.size();
     }
+
+    private final NSOperationQueue operationQueue;
+
+    protected RepositoryListViewController(Pointer peer) {
+        super(peer);
+        operationQueue = NSOperationQueue.alloc().init();
+        operationQueue.setQualityOfService(NSQualityOfService.Background);
+    }
+
+    @Override
+    public void viewDidLoad() {
+        super.viewDidLoad();
+        RepositoryListContract.Presenter repositoryPresenter = new RepositoryListPresenterImpl(this);
+        repositoryPresenter.getRepositories(IOSSchedulers.mainThread(), IOSSchedulers.handlerThread(operationQueue));
+    }
+
+    List<GitHubRepo> repoList = new ArrayList();
+    @Override
+    public void showRepoList(@NotNull List<GitHubRepo> repoList) {
+        this.repoList = repoList;
+        repositoryTableView().reloadData();
+    }
+
 
     static {
         NatJ.register();
-    }
-
-    @Generated
-    protected RepositoryListViewController(Pointer peer) {
-        super(peer);
     }
 
     @Generated
@@ -202,4 +232,6 @@ public class RepositoryListViewController extends UIViewController implements UI
     @Selector("version")
     @NInt
     public static native long version_static();
+
+
 }
